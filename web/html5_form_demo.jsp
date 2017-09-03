@@ -5,13 +5,17 @@
     <title>Title</title>
 </head>
 <body>
-<h4>Server received the following inputs from browser</h4>
+<h4>Server received the following inputs from user (browser)</h4>
 <UL>
 <%
     Enumeration<String> paraNames = request.getParameterNames();
     while (paraNames.hasMoreElements()) {
         String pName = paraNames.nextElement();
-        out.println("<LI>" + pName + " - " + request.getParameter(pName) + "</LI>");
+        //multiple parameters can have the same name
+        String[] paraValues = request.getParameterValues(pName);
+        for (String value : paraValues) {
+            out.println("<LI>" + pName + " - " + value + "</LI>");
+        }
     }
 %>
 </UL>
