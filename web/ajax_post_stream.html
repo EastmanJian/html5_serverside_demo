@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX Demo</title>
+    <script>
+        function loadTxtDoc(url) {
+            if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            }
+            else {// code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+                }
+            }
+            xmlhttp.open("POST", url, true);
+            xmlhttp.send("abcdefghijklmnopqrstuvwxyz");
+        }
+    </script>
+</head>
+<body>
+<p>This example shows how AJAX works. When the button is clicked, a function is called. </p>
+<p>It uses XMLHttpRequest and POST method to submit a stream to server (get_post_data.jsp). The server load the stream
+    and response the same to the browser asynchronously. </p>
+<div id="myDiv" style="border:1px solid black;height:100%;width:600px;padding:5px">Let AJAX change this text</div>
+<br/>
+<button onclick="loadTxtDoc('https://eastmanjian.cn/html5_demo/get_post_data.jsp')">Click</button>
+</body>
+</html>
