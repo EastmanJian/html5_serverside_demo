@@ -4,22 +4,19 @@
 <h1>HTML5 Sever-Sent Event Demo</h1>
 <p>EventSource should be from the same server</p>
 <p>The EventSource <a href="html5_sse_demo.jsp">html5_sse_demo.jsp</a> output as below.</p>
-<iframe src="html5_sse_demo.jsp"></iframe>
+<iframe src="https://eastmanjian.cn/html5_demo/html5_sse_demo.jsp"></iframe>
 <p>The following messages are pushed from the Server to the current page.</p>
 <div id="result"></div>
 
 <script>
-    if(typeof(EventSource)!=="undefined")
-    {
-        var source=new EventSource("html5_sse_demo.jsp");
-        source.onmessage=function(event)
-        {
-            document.getElementById("result").innerHTML+=event.data + "<br />";
-        };
+    if (typeof(EventSource) !== "undefined") {
+        var source = new EventSource("https://eastmanjian.cn/html5_demo/html5_sse_demo.jsp");
+        source.onmessage = function (event) {
+            document.getElementById("result").innerHTML += event.data + "<br />";
+        }
     }
-    else
-    {
-        document.getElementById("result").innerHTML="Sorry, your browser does not support server-sent event.";
+    else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent event.";
     }
 </script>
 

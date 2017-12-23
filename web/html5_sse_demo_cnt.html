@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>HTML5 Sever-Sent Event Demo</h1>
+<p>EventSource should be from the same server</p>
+<p>The EventSource <a href="https://eastmanjian.cn/html5_demo/">html5_sse_demo_cnt.jsp</a> continuously to update the number of
+    registered users.</p>
+<p>The data is pushed from the Server to the current page.</p>
+<div id="result"></div>
+
+<script>
+    if (typeof(EventSource) !== "undefined") { //check browser support
+        var source = new EventSource("https://eastmanjian.cn/html5_demo/html5_sse_demo_cnt.jsp");
+        source.onmessage = function (event) {
+            document.getElementById("result").innerHTML = "There are <span style=\"color: red; font-size: xx-large\">"
+                + event.data + "</span> users registered this site.";
+        };
+    } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent event.";
+    }
+</script>
+
+</body>
+</html>
